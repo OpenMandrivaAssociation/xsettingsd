@@ -22,8 +22,7 @@ antialiasing/hinting, and UI sound effects.
 
 %build
 %set_build_flags
-%configure_scons
-%scons xsettingsd dump_xsettings
+CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" %scons xsettingsd dump_xsettings
 
 %install
 for file in %{name} dump_xsettings; do
