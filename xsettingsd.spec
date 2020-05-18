@@ -1,5 +1,5 @@
 Summary:	Provides settings to X11 applications via the XSETTINGS specification
-Name:		xsettings
+Name:		xsettingsd
 Version:	1.0.0
 Release:	1
 Group:		Graphical desktop/Other
