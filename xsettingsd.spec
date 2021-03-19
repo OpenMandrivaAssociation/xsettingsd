@@ -1,11 +1,11 @@
 Summary:	Provides settings to X11 applications via the XSETTINGS specification
 Name:		xsettingsd
-Version:	1.0.0
-Release:	3
+Version:	1.0.2
+Release:	1
 Group:		Graphical desktop/Other
 License:	BSD
 Url:		https://github.com/derat/xsettingsd
-Source0:	https://github.com/derat/xsettingsd/archive/v%{version}.tar.gz
+Source0:	https://github.com/derat/xsettingsd/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	scons
 BuildRequires:	pkgconfig(x11)
 
