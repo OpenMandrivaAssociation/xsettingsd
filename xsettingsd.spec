@@ -49,3 +49,4 @@ EOF
 %{_bindir}/dump_xsettings
 %{_mandir}/man1/%{name}.1.*
 %{_mandir}/man1/dump_xsettings.1.*
+%{_userunitdir}/xsettingsd.service
