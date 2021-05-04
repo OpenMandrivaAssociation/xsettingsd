@@ -1,14 +1,14 @@
 Summary:	Provides settings to X11 applications via the XSETTINGS specification
 Name:		xsettingsd
 Version:	1.0.2
-Release:	1
+Release:	2
 Group:		Graphical desktop/Other
 License:	BSD
 Url:		https://github.com/derat/xsettingsd
 Source0:	https://github.com/derat/xsettingsd/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
-BuildRequires:	scons
+BuildRequires:	cmake
 BuildRequires:	pkgconfig(x11)
+%systemd_requires
 
 %description
 xsettingsd is a daemon that implements the XSETTINGS specification.
@@ -29,6 +29,9 @@ antialiasing/hinting, and UI sound effects.
 %install
 %make_install -C build
 
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+touch %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
+
 # (tpg) add autostart file
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart/
 cat << EOF > %{buildroot}%{_sysconfdir}/xdg/autostart/xsettingsd.desktop
@@ -42,11 +45,19 @@ Type=Service
 OnlyShowIn=KDE;LXQt;
 EOF
 
+%post
+%systemd_user_post %{name}.service
+
+%postun
+%systemd_user_postun %{name}.service
+
 %files
 %doc COPYING README.md
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
 %{_sysconfdir}/xdg/autostart/xsettingsd.desktop
 %{_bindir}/%{name}
 %{_bindir}/dump_xsettings
 %{_mandir}/man1/%{name}.1.*
 %{_mandir}/man1/dump_xsettings.1.*
-%{_userunitdir}/xsettingsd.service
+%{_userunitdir}/%{name}.service
