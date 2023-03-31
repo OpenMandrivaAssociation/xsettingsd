@@ -1,7 +1,7 @@
 Summary:	Provides settings to X11 applications via the XSETTINGS specification
 Name:		xsettingsd
 Version:	1.0.2
-Release:	3
+Release:	4
 Group:		Graphical desktop/Other
 License:	BSD
 Url:		https://github.com/derat/xsettingsd
